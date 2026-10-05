@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentary Elements Interactive Builder</title>
+    <style>
+        body {
+            background-color: #22272e;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h2 {
+            color: #f1e800;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        p.instructions {
+            color: #adbac7;
+            margin-bottom: 20px;
+            text-align: center;
+            max-width: 650px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 700px;
+            background-color: #2d333b;
+            border: 2px solid #444c56;
+            border-radius: 8px;
+            padding: 20px;
+            gap: 20px;
+        }
+        .screen {
+            background-color: #1c2128;
+            border: 2px solid #f1e800;
+            border-radius: 6px;
+            min-height: 180px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+        }
+        .element-badge {
+            display: inline-block;
+            background-color: #f1e800;
+            color: #22272e;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .element-title {
+            color: #f1e800;
+            font-size: 18px;
+            margin: 0;
+        }
+        .element-def {
+            font-size: 15px;
+            line-height: 1.5;
+            margin: 0;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .element-desc {
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 0;
+            color: #adbac7;
+        }
+        .selector-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+        .nav-btn {
+            background-color: #444c56;
+            color: #ffffff;
+            border: 2px solid transparent;
+            padding: 10px 6px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+            transition: background-color 0.2s, border-color 0.2s;
+            text-align: center;
+        }
+        .nav-btn.active {
+            background-color: #f1e800;
+            color: #22272e;
+            border-color: #f1e800;
+        }
+        .nav-btn:hover:not(.active) {
+            background-color: #373e47;
+        }
+        .footer-note {
+            text-align: center;
+            font-size: 12px;
+            color: #adbac7;
+            border-top: 1px solid #444c56;
+            padding-top: 10px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Common Elements of Documentary Filmmaking</h2>
+    <p class="instructions">Explore the core stylistic tools and production techniques filmmakers use to shape non-fiction material into engaging cinematic experiences.</p>
+
+    <div class="container">
+        <!-- Visual Screen -->
+        <div class="screen">
+            <span id="badge" class="element-badge">Element 01 of 07</span>
+            <h3 id="title" class="element-title">1. B-Roll</h3>
+            <p id="definition" class="element-def">Supplementary or alternative footage filmed to illustrate events as they occur, build geographic or situational context, and visually cover cuts made during interviews.</p>
+            <p id="explanation" class="element-desc">While primary footage often consists of talking heads, B-roll provides the visual texture of the environment. It captures unscripted actions, atmospheric details, and everyday routines that allow viewers to feel physically immersed in the world of the documentary.</p>
+        </div>
+
+        <!-- Navigation Grid -->
+        <div class="selector-grid">
+            <button id="btn-0" class="nav-btn active" onclick="showElement(0)">1. B-Roll</button>
+            <button id="btn-1" class="nav-btn" onclick="showElement(1)">2. Interviews</button>
+            <button id="btn-2" class="nav-btn" onclick="showElement(2)">3. Narration</button>
+            <button id="btn-3" class="nav-btn" onclick="showElement(3)">4. Archival</button>
+            <button id="btn-4" class="nav-btn" onclick="showElement(4)">5. Reenactments</button>
+            <button id="btn-5" class="nav-btn" onclick="showElement(5)">6. Observational</button>
+            <button id="btn-6" class="nav-btn" onclick="showElement(6)">7. Score & Sound</button>
+            <button class="nav-btn" style="background-color: #2d333b; color: #adbac7; border: 1px dashed #444c56; cursor: default;" disabled>Interactive</button>
+        </div>
+
+        <p class="footer-note">Click through the buttons above to examine each core documentary storytelling element.</p>
+    </div>
+
+    <script>
+        const elements = [
+            {
+                badge: "Element 01 of 07",
+                title: "1. B-Roll",
+                def: "Supplementary or alternative footage filmed to illustrate events as they occur, build geographic or situational context, and visually cover cuts made during interviews.",
+                exp: "While primary footage often consists of talking heads, B-roll provides the visual texture of the environment. It captures unscripted actions, atmospheric details, and everyday routines that allow viewers to feel physically immersed in the world of the documentary."
+            },
+            {
+                badge: "Element 02 of 07",
+                title: "2. Interviews (Talking Heads)",
+                def: "On-camera conversations where subjects, witnesses, experts, or participants speak to an off-camera interviewer to provide testimony, personal narratives, and factual context.",
+                exp: "Interviews serve as the narrative backbone of most non-fiction films. The framing, lighting, and eye-line of the subject (whether looking directly into the camera lens or slightly off-axis at the interviewer) heavily influence viewer trust and emotional intimacy."
+            },
+            {
+                badge: "Element 03 of 07",
+                title: "3. Narrator / Voice-Over Narration",
+                def: "An unseen speaker who addresses the audience directly to guide the narrative argument, supply historical background, or tie disparate thematic elements together.",
+                exp: "Narration can be delivered by an objective, authoritative 'Voice of God' speaker or by the filmmaker themselves in a personal, essayistic style. It functions as the intellectual glue of the documentary, establishing continuity and directorial perspective."
+            },
+            {
+                badge: "Element 04 of 07",
+                title: "4. Archival Material",
+                def: "Preexisting visual, audio, or textual artifacts—such as historical photographs, newsreels, home movies, government documents, and diary entries—integrated into the film.",
+                exp: "Archival material anchors the documentary in historical reality, providing tangible evidence of past events. However, how archival material is edited, paired with music, or reframed by narration dictates whether it serves as objective history or subjective persuasion."
+            },
+            {
+                badge: "Element 05 of 07",
+                title: "5. Reenactments",
+                def: "Staged, dramatic re-creations of past events, frequently performed by actors or stylized through cinematic staging when original footage or photographs do not exist.",
+                exp: "Reenactments bridge the gap between documentary and narrative fiction. While they help visualize historical moments that would otherwise be lost to time, they also introduce artistic fabrication, requiring viewers to critically evaluate the boundary between fact and cinematic construction."
+            },
+            {
+                badge: "Element 06 of 07",
+                title: "6. Observational Footage (Direct Cinema / Cinéma Vérité)",
+                def: "Unscripted, real-time recording of human behavior where the filmmaker acts as an unobtrusive observer ('fly on the wall') without directing or interviewing subjects.",
+                exp: "This element relies on long takes, natural lighting, and synchronized sound to capture events as they naturally unfold. It minimizes artificial staging to present authentic interactions and unvarnished behavior."
+            },
+            {
+                badge: "Element 07 of 07",
+                title: "7. Non-Diegetic Sound & Musical Score",
+                def: "Audio elements—such as atmospheric orchestration, background musical scores, or sound effects—that originate outside the world of the film and are added during post-production.",
+                exp: "Music is one of the most powerful emotional levers in a documentary. By pairing neutral or ambiguous footage with uplifting, tense, or tragic musical scores, filmmakers actively steer how the audience feels about the events unfolding on screen."
+            }
+        ];
+
+        function showElement(index) {
+            // Update button active state
+            for (let i = 0; i < 7; i++) {
+                const btn = document.getElementById(`btn-${i}`);
+                if (i === index) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            }
+
+            // Update content display
+            const data = elements[index];
+            document.getElementById('badge').innerText = data.badge;
+            document.getElementById('title').innerText = data.title;
+            document.getElementById('definition').innerText = data.def;
+            document.getElementById('explanation').innerText = data.exp;
+        }
+    </script>
+</body>
+</html>
